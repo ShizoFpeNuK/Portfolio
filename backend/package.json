@@ -7,13 +7,22 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js"
+    "start": "node --env-file=.env dist/index.js"
   },
   "author": "ShizoFpeNuK",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
+    "@types/stopword": "^2.0.3",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "natural": "^7.0.5",
+    "stopword": "^3.0.1"
   }
 }

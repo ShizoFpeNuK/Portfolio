@@ -2,5 +2,5 @@
 	"watch": ["src"],
 	"ext": ".ts",
 	"ignore": [],
-	"exec": "node --import ./registerESM.js src/index.ts"
+	"exec": "node --import ./registerESM.js --env-file=.env src/index.ts"
 }
