@@ -1,0 +1,28 @@
+@use "utils/scss/colors";
+@use "utils/scss/variables" as values;
+
+.container {
+  position: relative;
+
+  .stand {
+    position: relative;
+    background-color: var(--main-color);
+    border-radius: values.$main_border_radius;
+    border: values.$main_border;
+  }
+
+  .stand3D {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-shadow-color);
+    box-shadow: 0 8px var(--main-shadow-color);
+    border-bottom-left-radius: values.$main_border_radius;
+    border-bottom-right-radius: values.$main_border_radius;
+    border-bottom: values.$main_border;
+    border-left: values.$main_border;
+    border-right: values.$main_border;
+  }
+}

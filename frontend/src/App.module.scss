@@ -1,0 +1,11 @@
+.app {
+  padding: 25px;
+  height: 100vh;
+
+  .flexContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 30px;
+    min-height: 80vh; // TODO: Высота монитора изменить
+  }
+}
