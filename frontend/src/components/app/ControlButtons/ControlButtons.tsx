@@ -3,29 +3,36 @@ import { CSSProperties, FC, MouseEventHandler } from "react";
 import styles from "./ControlButtons.module.scss";
 import Stand3D from "components/utils/Stand3D/Stand3D";
 import Button3D from "components/buttons/Button3D/Button3D";
+import useMainMonitorStore from "stores/useMainMonitorStore";
+
+const enum BUTTON_LABEL {
+	HOME = "home",
+	PLAY = "play",
+}
 
 interface ControlButtonsProps {
 	style?: CSSProperties;
 }
 
 const ControlButtons: FC<ControlButtonsProps> = ({ style }) => {
+	const { actives, updateActive } = useMainMonitorStore();
+
 	const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-		// const element = e.target as HTMLElement;
+		let element = e.target as HTMLElement;
 
-		// if (element.tagName === "BUTTON") {
-		// 	console.log(element?.getAttribute("aria-label") + "1");
-		// 	return;
-		// }
+		if (element.classList[0] !== styles.container) {
+			while (element.role !== "button") {
+				element = element.parentElement!;
+			}
 
-		// const parent = element.parentElement;
-
-		// if (parent!.tagName === "BUTTON") {
-		// 	console.log(parent!.getAttribute("aria-label") + "2");
-		// 	return;
-		// }
-
-		// console.log(element);
-		// console.log(parent);
+			if (element!.getAttribute("aria-label") === BUTTON_LABEL.HOME && !actives.isHomeActive) {
+				updateActive("isHomeActive");
+			}
+			if (element!.getAttribute("aria-label") === BUTTON_LABEL.PLAY && !actives.isPlayActive) {
+				updateActive("isPlayActive");
+				return;
+			}
+		}
 	};
 
 	return (
@@ -40,16 +47,18 @@ const ControlButtons: FC<ControlButtonsProps> = ({ style }) => {
 				<Button3D
 					zIndex3D={-900}
 					bgColor={COLORS_BUTTON.GREEN}
-					ariaLabel="home"
+					ariaLabel={BUTTON_LABEL.HOME}
+					active={actives.isHomeActive}
 				>
-					Play
+					Home
 				</Button3D>
 				<Button3D
 					zIndex3D={-900}
 					bgColor={COLORS_BUTTON.YELLOW}
-					ariaLabel="play"
+					ariaLabel={BUTTON_LABEL.PLAY}
+					active={actives.isPlayActive}
 				>
-					Watch
+					Play
 				</Button3D>
 			</div>
 		</Stand3D>

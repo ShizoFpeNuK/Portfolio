@@ -1,5 +1,5 @@
-import styles from "./App.module.scss";
 import { FC } from "react";
+import styles from "./App.module.scss";
 import MainMonitor from "./components/app/MainMonitor/MainMonitor";
 import ControlButtons from "components/app/ControlButtons/ControlButtons";
 

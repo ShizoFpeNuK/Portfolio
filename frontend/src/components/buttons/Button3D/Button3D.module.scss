@@ -58,13 +58,14 @@ $shadow-y: 8px;
   .stand {
     position: relative;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    text-align: center;
     bottom: 0;
     padding: $padding-tb-stand 60px;
     background-color: var(--main-color);
     border-radius: values.$main_border_radius;
     border: values.$main_border;
+    transition: bottom 0.1s ease;
 
     @include colorBackground(1);
 
@@ -90,6 +91,7 @@ $shadow-y: 8px;
     box-shadow: 0 $shadow-y var(--main-shadow-color);
     border-radius: values.$main_border_radius;
     border: values.$main_border;
+    transition: box-shadow 0.1s ease-out;
 
     @include colorBackground(2);
   }
@@ -108,7 +110,7 @@ $shadow-y: 8px;
     }
   }
 
-  &:active {
+  &.activeButton {
     margin-bottom: $active-vertical-shift;
     transition: margin-bottom 0.1s linear;
 

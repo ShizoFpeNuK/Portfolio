@@ -10,14 +10,24 @@ interface Button3DProps {
 	zIndex?: number | string;
 	zIndex3D?: number | string;
 	ariaLabel?: string;
+	active?: boolean;
 }
 
-const Button3D: FC<Button3DProps> = ({ children, style, bgColor, zIndex, zIndex3D, ariaLabel }) => {
+const Button3D: FC<Button3DProps> = ({
+	children,
+	style,
+	bgColor,
+	zIndex,
+	zIndex3D,
+	ariaLabel,
+	active,
+}) => {
 	return (
-		<button
-			className={styles.container}
+		<div
+			className={classNames(styles.container, active ? styles.activeButton : "")}
 			style={style}
 			aria-label={ariaLabel}
+			role="button"
 		>
 			<div
 				className={classNames(styles.stand, styles[`${bgColor}`])}
@@ -32,7 +42,7 @@ const Button3D: FC<Button3DProps> = ({ children, style, bgColor, zIndex, zIndex3
 				className={classNames(styles.stand3D, styles[`${bgColor}`])}
 				style={{ zIndex: zIndex3D ?? 0 }}
 			/>
-		</button>
+		</div>
 	);
 };
 

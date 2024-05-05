@@ -1,5 +1,5 @@
-import styles from "./Stand3D.module.scss";
 import { CSSProperties, FC, ReactNode } from "react";
+import styles from "./Stand3D.module.scss";
 
 interface Stand3DProps {
 	style?: CSSProperties;
